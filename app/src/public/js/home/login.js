@@ -13,6 +13,9 @@ function login() {
         id: id.value,
         psword: password.value,
     };
-    console.log(req);
-    //fetch();
+    // object 값을 json 문자열로 바꿔 감싸줌
+
+    fetch("/login", {
+        body: JSON.stringify(req)
+    });
 }
