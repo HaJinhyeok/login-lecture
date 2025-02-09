@@ -11,7 +11,7 @@ const home = require("./src/routes/home");
 app.set("views", "./src/views");    // views라는 폴더로 뷰 설정
 app.set("view engine", "ejs"); // ejs라는 뷰 엔진으로 해석해주겠다.
 app.use("/", home); // use-> 미들 웨어를 등록해주는 메서드
-
+app.use(express.static(`${__dirname}/src/public`)); // __dirname: 현재 app.js가 존재하는 파일에서 정적 경로(static으로 추가해주겠다)
 module.exports = app;
 
 
