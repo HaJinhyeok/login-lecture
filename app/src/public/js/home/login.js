@@ -16,6 +16,13 @@ function login() {
     // object 값을 json 문자열로 바꿔 감싸줌
 
     fetch("/login", {
-        body: JSON.stringify(req)
-    });
+        method: "POST", // POST라는 http 메서드로 전달해 주어야함 ??? RESTful API 개념
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(req),
+    })
+        .then((res) => res.json())
+        // .then((res) => console.log(res));
+        .then(console.log); // 해당 값을 받아와 그대로 사용할 때 이처럼 생략 가능
 }
