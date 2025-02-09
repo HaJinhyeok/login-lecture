@@ -23,6 +23,17 @@ function login() {
         body: JSON.stringify(req),
     })
         .then((res) => res.json())
-        // .then((res) => console.log(res));
-        .then(console.log); // 해당 값을 받아와 그대로 사용할 때 이처럼 생략 가능
+        .then((res) => {
+            if (res.success) {
+                // 위치(location)을 루트로 바꿔줌
+                location.href = "/";
+            } else {
+                alert(res.msg);
+            }
+        })
+        .catch((err) => {
+            console.error(new Error("로그인 중 에러 발생"));
+        });
+    // .then((res) => console.log(res));
+    //.then(console.log); // 해당 값을 받아와 그대로 사용할 때 이처럼 생략 가능
 }
