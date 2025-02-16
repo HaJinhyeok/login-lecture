@@ -12,11 +12,14 @@ const id = document.querySelector("#id"),
 registerBtn.addEventListener("click", register); // click이라는 이벤트 발생 여부를 확인하고 register 함수 실행
 
 function register() {
+    if (!id.value) return alert("아이디를 입력해주십시오.");
+    if (password.value !== confirmPassword.value) return alert("비밀번호가 일치하지 않습니다.");
+
     const req = {
         id: id.value,
         name: name.value,
         psword: password.value,
-        confirmPsword: confirmPassword.value,
+        // bconfirmPsword: confirmPassword.value,
     };
 
     // object 값을 json 문자열로 바꿔 감싸줌
