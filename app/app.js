@@ -3,6 +3,12 @@
 // 모듈
 const express = require("express"); //express 라는 모듈 다운
 const bodyParser = require("body-parser");
+// 환경 변수 관리 모듈
+// 일반적으로 개발은 여러 명이 같이 하는데, 개인마다 OS(윈도우, 맥, 리눅스 등)가 다른 경우가 있고,
+// OS마다 환경 변수 등록 방식이 다르기 때문에 노드 측에서 제시한 dotenv 모듈을 사용해 동일하게 환경 변수 등록 가능해짐
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 
 // 라우팅
