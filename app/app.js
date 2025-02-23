@@ -18,8 +18,6 @@ const accessLogStream = require("./src/config/log");
 const home = require("./src/routes/home");
 
 
-
-
 // 앱 세팅
 app.set("views", "./src/views");    // views라는 폴더로 뷰 설정
 app.set("view engine", "ejs"); // ejs라는 뷰 엔진으로 해석해주겠다.
