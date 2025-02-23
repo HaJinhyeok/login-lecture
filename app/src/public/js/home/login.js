@@ -9,6 +9,8 @@ const id = document.querySelector("#id"),
 loginBtn.addEventListener("click", login); // click이라는 이벤트 발생 여부를 확인하고 login 함수 실행
 
 function login() {
+    if (!id.value) return alert("아이디를 입력해주십시오.");
+    if (!password.value) return alert("비밀번호를 입력해주십시오.");
     const req = {
         id: id.value,
         psword: password.value,
@@ -28,6 +30,7 @@ function login() {
                 // 위치(location)을 루트로 바꿔줌
                 location.href = "/";
             } else {
+                if (res.err) return alert(res.err);
                 alert(res.msg);
             }
         })

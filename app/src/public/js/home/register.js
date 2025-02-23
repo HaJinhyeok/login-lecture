@@ -37,6 +37,7 @@ function register() {
                 // 위치(location)을 루트로 바꿔줌
                 location.href = "/login";
             } else {
+                if (res.err) return alert(res.err);
                 alert(res.msg);
             }
         })

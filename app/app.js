@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 // OS마다 환경 변수 등록 방식이 다르기 때문에 노드 측에서 제시한 dotenv 모듈을 사용해 동일하게 환경 변수 등록 가능해짐
 const dotenv = require("dotenv");
 const morgan = require("morgan");
+const logger = require("./src/config/logger");
 
 const app = express();
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(express.static(`${__dirname}/src/public`)); // __dirname: 현재 app.js�
 app.use(bodyParser.json());
 // url을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan("common", { stream: logger.stream }));
 // app.use(morgan("tiny"));
 // app.use(morgan(":method :date[web] :status :res[content-length] - :response-time ms"));
 app.use(morgan("dev"));
