@@ -46,8 +46,9 @@ class UserStorage {
 
     static getUserInfo(id) {
         return new Promise((resolve, reject) => {
-            const query = "SELECT * FROM abc WHERE id = ?;";
+            const query = "SELECT * FROM users WHERE id = ?;";
             db.query(query, [id], (err, data) => {
+                console.log(data[0]);
                 // err는 object 타입이므로, 알람 역할을 하려면 문자열로 바꿔주어야한다.
                 if (err) reject(`${err}`);
                 // 그냥 data는 배열로 감싸져 있으므로 안되고 그 안의 RowDataPacket만 전달해주어야한다.
@@ -70,7 +71,7 @@ class UserStorage {
 
     static async save(userInfo) {
         return new Promise((resolve, reject) => {
-            const query = "INSERT INTO abs(id, name, psword) VALUES(?, ?, ?);";
+            const query = "INSERT INTO users(id, name, psword) VALUES(?, ?, ?);";
             db.query(query, [userInfo.id, userInfo.name, userInfo.psword],
                 (err) => {
                     if (err) reject(`${err}`);
